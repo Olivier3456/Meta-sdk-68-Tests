@@ -19,8 +19,7 @@ public class KeyInHoleBehaviour : MonoBehaviour
 
     public event EventHandler OnKeyInTheHole;
 
-    public GameObject boxGrabInteractable;
-    public GameObject boxHandGrabInteractable;
+    public GameObject boxGrabInteractablesParent;
 
 
     public Transform boxLidTransform;
@@ -94,7 +93,6 @@ public class KeyInHoleBehaviour : MonoBehaviour
             boxLidTransform.rotation = Quaternion.Slerp(startRotation, endRotation, boxLidAnimCurve.Evaluate(lerp));
         }
 
-        boxGrabInteractable.SetActive(true);
-        boxHandGrabInteractable.SetActive(true);
+        boxGrabInteractablesParent.SetActive(true);
     }
 }
