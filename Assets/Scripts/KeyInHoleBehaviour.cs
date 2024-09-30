@@ -45,15 +45,15 @@ public class KeyInHoleBehaviour : MonoBehaviour
     {
         coroutineExecuted = true;
 
+        // key is not grabbable anymore
+        handGrabInteractable.Disable();
+        HandGrabInteractable_mirror.Disable();
 
         yield return new WaitForSeconds(1f);    // wait for the key to snap in the hole
 
+        // no need to the lock snap interactable anymore
+        keyHoleSnapInteractable.Disable();
 
-        // key is not grabbable anymore
-        grabbable.enabled = false;
-        keyHoleSnapInteractable.enabled = false;
-        handGrabInteractable.enabled = false;
-        HandGrabInteractable_mirror.enabled = false;
         keyRigidbody.isKinematic = true;
 
         // key translation in the lock
