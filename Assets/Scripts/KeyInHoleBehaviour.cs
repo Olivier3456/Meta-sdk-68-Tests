@@ -8,7 +8,7 @@ public class KeyInHoleBehaviour : MonoBehaviour
 {
     public Transform targetTransform;
     public Grabbable grabbable;
-    public Rigidbody rb;
+    public Rigidbody keyRigidbody;
     public SnapInteractable keyHoleSnapInteractable;
     public HandGrabInteractable handGrabInteractable;
     public HandGrabInteractable HandGrabInteractable_mirror;
@@ -44,15 +44,17 @@ public class KeyInHoleBehaviour : MonoBehaviour
     private IEnumerator MoveCoroutine()
     {
         coroutineExecuted = true;
-        yield return new WaitForSeconds(1f);
 
 
-        // key is not grabbable anymore:
+        yield return new WaitForSeconds(1f);    // wait for the key to snap in the hole
+
+
+        // key is not grabbable anymore
         grabbable.enabled = false;
         keyHoleSnapInteractable.enabled = false;
         handGrabInteractable.enabled = false;
         HandGrabInteractable_mirror.enabled = false;
-        rb.isKinematic = true;
+        keyRigidbody.isKinematic = true;
 
         // key translation in the lock
         Vector3 startPosition = targetTransform.position;
